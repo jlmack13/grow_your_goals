@@ -17,11 +17,13 @@ ActiveRecord::Schema.define(version: 20171212171701) do
     t.text "description"
     t.string "status"
     t.string "category"
+    t.integer "goal_id"
     t.date "start_date"
     t.date "end_date"
     t.date "completed_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_actions_on_goal_id"
   end
 
   create_table "goals", force: :cascade do |t|
