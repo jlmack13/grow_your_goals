@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GrowYourGoalsApp</title>
+    <title>Grow Your Goals</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/lumen/bootstrap.min.css" rel="stylesheet" integrity="sha384-rGAkR2qts0FfeepPEwAKdA+KLiTct+OBJ7ukPPivL86aKZa39nuOS0Yj6Sy8ebLR" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/css/main.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
 
   <body>
+
+  
     <%= yield %>
+
+
   </body>
 </html>
