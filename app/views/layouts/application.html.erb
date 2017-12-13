@@ -10,34 +10,34 @@
   </head>
 
   <body>
-    <header>
-      <!-- Logo -->
-      <%= image_tag("Logo-Grow.svg", width: '800px') %>
+    <div class="main-container container">
+      <header>
+        <!-- Logo -->
+        <%= image_tag("Logo-Grow.svg", width: '800px') %>
 
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-menu">
-        <div class="collapse navbar-collapse" id="navbarColor03">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Actions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Garden</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <div class="main-container">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-menu">
+          <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Actions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Garden</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
       <%= yield %>
 

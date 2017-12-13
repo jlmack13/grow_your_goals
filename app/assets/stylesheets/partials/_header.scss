@@ -1,0 +1,17 @@
+header {
+  background-color: white;
+  #main-logo {
+    margin: auto;
+    display: flex;
+  }
+  #main-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+  @media (min-width: 768px) {
+      #main-menu {
+          float: none;
+      }
+  }
+}
