@@ -1,4 +1,5 @@
-@import 'partials/header', 'partials/footer';
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Lobster+Two:400i|Open+Sans');
+@import 'partials/variables', 'partials/header', 'partials/footer';
 
 html {
   height: 100%;
@@ -15,8 +16,8 @@ body {
   .main-container {
     padding-bottom: 5%;
     min-height: 500px;
-    div.container {
-      width: 800px;
-    }
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
   }
 }

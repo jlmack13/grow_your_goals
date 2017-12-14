@@ -10,43 +10,48 @@
   </head>
 
   <body>
-    <div class="main-container container">
+    <div class="container">
       <header>
         <!-- Logo -->
-        <%= image_tag("Logo-Grow.svg", width: '800px') %>
+        <%= image_tag("Logo-Grow.svg", width: '800px', id: 'main-logo') %>
 
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-menu">
-          <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <div class="" id="navbarColor03">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Actions</a>
+                <a class="nav-link" href="#">actions</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Garden</a>
+                <a class="nav-link" href="#">garden</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">about</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="#">logout</a>
               </li>
             </ul>
           </div>
         </nav>
       </header>
 
-      <%= yield %>
+      <!-- Main -->
+      <main role="main" class="main-container">
 
-    </div>
-    <!-- Footer -->
-    <footer>
-        <div id="footer-left"><p>Copyright &copy; 2017 <a href="http://jennimacklin.com">Jenni Macklin</a></p></div>
-        <div id="footer-right"><p>Created as part of the <a href="https://flatironschool.com">Learn.Co</a> curriculum</p></div>
-    </footer>
+        <%= yield %>
+
+      </main>
+
+      <!-- Footer -->
+      <footer>
+          <div id="footer-left"><p>Copyright &copy; 2017 <a href="http://jennimacklin.com">Jenni Macklin</a></p></div>
+          <div id="footer-right"><p>Created as part of the <a href="https://flatironschool.com">Learn.Co</a> curriculum</p></div>
+      </footer>
+  </div>
 
 
   </body>
