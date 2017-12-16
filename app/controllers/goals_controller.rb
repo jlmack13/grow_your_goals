@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
 
   def index
     #TODO change this so that it's only the user's goals
-    @goals = Goal.all
+    @goals = current_user.goals
   end
 
   def new
@@ -11,7 +11,8 @@ class GoalsController < ApplicationController
   end
 
   def create
-    @goal = Goal.create(goal_params)
+    @goal = current_user.goals.build(goal_params)
+    @goal.save
     redirect_to goal_path(@goal)
   end
 
