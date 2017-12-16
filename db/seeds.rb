@@ -10,6 +10,12 @@
 User.create(name: "Harry", email: "harry@hogwarts.edu", password: "12345678")
 User.create(name: "Ginny", email: "ginny@hogwarts.edu", password: "test123")
 
+#Create Test Category
+Category.create(name: "Learning")
+Category.create(name: "Health")
+Category.create(name: "Writing")
+Category.create(name: "Personal Growth")
+
 #Create Test Goals
 Goal.create(name: "Write a Novel", description: "Write my first novel, finally!", user_id: 1, start_date: DateTime.now, end_date: Date.new(2018, 12, 12), status: "incomplete")
 Goal.create(name: "Learn to Code", description: "Teach myself how to code in Ruby.", user_id: 2, start_date: DateTime.now, end_date: Date.new(2018, 4, 12), status: "incomplete")

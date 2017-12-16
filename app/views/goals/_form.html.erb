@@ -25,12 +25,12 @@
   <%= f.label :end_date %>
   <%= f.date_select :end_date %><br>
 
-  <%= f.label :actions, 'Actions' %><br>
-  <%= f.fields_for :actions, goal.actions.build do |action_fields| %>
-    <%= action_fields.label :name %>
-    <%= action_fields.text_field :name %><br>
-    <%= action_fields.label :description %>
-    <%= action_fields.text_area :description %><br>
+  <%= f.label :categories, 'Categories' %><br>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
+  <h4>Or, Create a New Category:</h4>
+  <%= f.fields_for :categories, goal.categories.build do |category_fields| %>
+    <%= category_fields.label :name %>
+    <%= category_fields.text_field :name %><br>
   <% end %>
 
   <%= f.submit %>
