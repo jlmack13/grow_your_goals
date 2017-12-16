@@ -28,11 +28,15 @@ class GoalsController < ApplicationController
   end
 
   def update
-    @goal.update(goal_params)
-    redirect_to goal_path(@goal)
+    if @goal.update(goal_params)
+      redirect_to goal_path(@goal)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @goal.destroy
   end
 
   private
