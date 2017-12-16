@@ -5,10 +5,10 @@ class Goal < ApplicationRecord
   has_many :actions
   validates_presence_of :name, :start_date, :end_date
 
-  accepts_nested_attributes_for :categories
+  accepts_nested_attributes_for :categories, reject_if: :all_blank
 
   def categories_attributes=(category_attributes)
-    category.attributes.values.each do |category_attribute|
+    category_attributes.values.each do |category_attribute|
       category = Category.find_or_create_by(category_attribute)
       self.categories << category
     end

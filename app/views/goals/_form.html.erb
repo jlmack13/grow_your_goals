@@ -1,37 +1,51 @@
-<%= form_for goal do |f| %>
-  <% if goal.errors.any? %>
+<%= form_for @goal do |f| %>
+  <% if @goal.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% goal.errors.full_messages.each do |msg| %>
+      <% @goal.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name%><br>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name%><br>
+  </div>
 
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %><br>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %><br>
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_select :start_date %><br>
+  </div>
 
-  <%= f.label :start_date %>
-  <%= f.date_select :start_date %><br>
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.date_select :end_date %><br>
+  </div>
 
+  <div class="field">
+    <%= f.label :categories, 'Categories' %><br>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
+  </div>
 
-  <%= f.label :end_date %>
-  <%= f.date_select :end_date %><br>
-
-  <%= f.label :categories, 'Categories' %><br>
-  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
   <h4>Or, Create a New Category:</h4>
-  <%= f.fields_for :categories, goal.categories.build do |category_fields| %>
-    <%= category_fields.label :name %>
-    <%= category_fields.text_field :name %><br>
-  <% end %>
+  <div class="field">
+    <%= f.fields_for :categories, @goal.categories.build do |category_fields| %>
+      <%= category_fields.label :name %>
+      <%= category_fields.text_field :name %><br>
+    <% end %>
+  </div>
 
-  <%= f.submit %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
 <% end %>

@@ -8,12 +8,16 @@ class GoalsController < ApplicationController
 
   def new
     @goal = Goal.new
+    @goal.categories.build
   end
 
   def create
     @goal = current_user.goals.build(goal_params)
-    @goal.save
-    redirect_to goal_path(@goal)
+    if @goal.save
+      redirect_to goal_path(@goal)
+    else
+      render :new
+    end
   end
 
   def show
@@ -38,7 +42,7 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:name, :description, :start_date, :end_date, categories_ids:[], category_attributes: [:name])
+    params.require(:goal).permit(:name, :description, :start_date, :end_date, categories_ids:[], categories_attributes:[:name])
   end
 
 end
