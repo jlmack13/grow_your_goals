@@ -4,7 +4,6 @@ class CreateActions < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :description
       t.string :status
-      t.string :category
       t.belongs_to :goal, foreign_key: true
       t.date :start_date
       t.date :end_date

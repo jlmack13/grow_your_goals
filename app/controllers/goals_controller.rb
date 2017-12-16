@@ -1,6 +1,11 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update]
 
+  def index
+    #TODO change this so that it's only the user's goals
+    @goals = Goal.all
+  end
+
   def new
     @goal = Goal.new
   end
@@ -32,7 +37,7 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:name, :description, :category, :start_date, :end_date)
+    params.require(:goal).permit(:name, :description, :start_date, :end_date, action_ids:[])
   end
 
 end
