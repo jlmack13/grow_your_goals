@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :goals
-  has_many :actions, through: :goals
+  has_many :tasks, through: :goals
 end

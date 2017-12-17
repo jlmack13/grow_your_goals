@@ -6,7 +6,8 @@
 <% @goal.categories.each do |c| %>
   <h3><%= c.name %></h3>
 <% end %>
-<h3>Actions:</h3>
-<% @goal.actions.each do |a| %>
+<h3>Tasks:</h3>
+<% @goal.tasks.each do |a| %>
   <h4><%= a.name %></h4>
 <% end %>
+<%= link_to "New Task", new_goal_task_path(@goal) %>

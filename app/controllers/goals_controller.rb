@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_goal, only: [:show, :edit, :update]
 
   def index
@@ -9,7 +10,7 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @goal.categories.build
-    3.times { @goal.actions.build }
+    3.times { @goal.tasks.build }
   end
 
   def create
@@ -22,7 +23,7 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @actions = @goal.actions
+    @tasks = @goal.tasks
   end
 
   def edit
@@ -47,7 +48,7 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:name, :description, :start_date, :end_date, category_ids:[], categories_attributes:[:name], actions_attributes:[:name])
+    params.require(:goal).permit(:name, :description, :start_date, :end_date, category_ids:[], categories_attributes:[:name], tasks_attributes:[:name])
   end
 
 end

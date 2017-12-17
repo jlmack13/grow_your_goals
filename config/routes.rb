@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'goals#index'
   resources :goals do
-    resources :actions, only: [:new, :create, :edit, :update]
+    resources :tasks, only: [:new, :edit]
   end
 
-  resources :actions, only: [:index]
+  resources :tasks
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

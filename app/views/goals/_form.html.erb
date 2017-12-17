@@ -44,26 +44,26 @@
     <% end %>
   </div>
 
-  <h4>Add Actions:</h4>
-  <p>To start, set 3 actions that you can take to achieve your goal. Don't worry! You can add more later if you wish.</p>
+  <h4>Add Tasks:</h4>
+  <p>To start, set 3 tasks that you can take to achieve your goal. Don't worry! You can add more later if you wish.</p>
   <div class="field">
-    <%= f.fields_for :actions, @goal.actions.build do |action_fields| %>
-      <%= action_fields.label :name, "Action 1" %>
-      <%= action_fields.text_field :name %><br>
+    <%= f.fields_for :tasks, @goal.tasks.build do |task_fields| %>
+      <%= task_fields.label :name, "Task 1" %>
+      <%= task_fields.text_field :name %><br>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.fields_for :actions, @goal.actions.build do |action_fields| %>
-      <%= action_fields.label :name, "Action 2" %>
-      <%= action_fields.text_field :name %><br>
+    <%= f.fields_for :tasks, @goal.tasks.build do |task_fields| %>
+      <%= task_fields.label :name, "Task 2" %>
+      <%= task_fields.text_field :name %><br>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.fields_for :actions, @goal.actions.build do |action_fields| %>
-      <%= action_fields.label :name, "Action 3" %>
-      <%= action_fields.text_field :name %><br>
+    <%= f.fields_for :tasks, @goal.tasks.build do |task_fields| %>
+      <%= task_fields.label :name, "Task 3" %>
+      <%= task_fields.text_field :name %><br>
     <% end %>
   </div>
 

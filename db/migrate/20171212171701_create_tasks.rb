@@ -1,6 +1,6 @@
-class CreateActions < ActiveRecord::Migration[5.1]
+class CreateTasks < ActiveRecord::Migration[5.1]
   def change
-    create_table :actions do |t|
+    create_table :tasks do |t|
       t.string :name
       t.text :description
       t.string :status
