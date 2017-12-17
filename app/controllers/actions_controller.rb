@@ -6,6 +6,7 @@ class ActionsController < ApplicationController
   end
 
   def new
+    @goal = Goal.find_by(params[:goal_id])
     @action = Action.new
   end
 
