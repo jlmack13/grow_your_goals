@@ -9,6 +9,7 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @goal.categories.build
+    3.times { @goal.actions.build }
   end
 
   def create
@@ -46,7 +47,7 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:name, :description, :start_date, :end_date, category_ids:[], categories_attributes:[:name])
+    params.require(:goal).permit(:name, :description, :start_date, :end_date, category_ids:[], categories_attributes:[:name], actions_attributes:[:name])
   end
 
 end

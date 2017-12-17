@@ -44,6 +44,29 @@
     <% end %>
   </div>
 
+  <h4>Add Actions:</h4>
+  <p>To start, set 3 actions that you can take to achieve your goal. Don't worry! You can add more later if you wish.</p>
+  <div class="field">
+    <%= f.fields_for :actions, @goal.actions.build do |action_fields| %>
+      <%= action_fields.label :name, "Action 1" %>
+      <%= action_fields.text_field :name %><br>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :actions, @goal.actions.build do |action_fields| %>
+      <%= action_fields.label :name, "Action 2" %>
+      <%= action_fields.text_field :name %><br>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :actions, @goal.actions.build do |action_fields| %>
+      <%= action_fields.label :name, "Action 3" %>
+      <%= action_fields.text_field :name %><br>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

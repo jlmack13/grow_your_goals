@@ -6,6 +6,7 @@ class Goal < ApplicationRecord
   validates_presence_of :name, :start_date, :end_date
 
   accepts_nested_attributes_for :categories, reject_if: :all_blank
+  accepts_nested_attributes_for :actions, reject_if: :all_blank
 
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
