@@ -13,4 +13,5 @@ class Goal < ApplicationRecord
       self.categories << category
     end
   end
+
 end

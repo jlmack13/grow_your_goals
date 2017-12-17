@@ -1,0 +1,4 @@
+<h1>Welcome, <%= current_user.name %></h1>
+<% @goals.each do |goal| %>
+  <h3><%= goal.name %></h3>
+<% end %>
