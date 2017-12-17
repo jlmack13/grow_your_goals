@@ -1,2 +1,8 @@
-<h1><%= @goal.name %></h1>
-<h2><%= current_user.name %></h2>
+<h5>Welcome, <%= current_user.name %></h5>
+
+<h1>Goal: <%= @goal.name %></h1>
+<p>Description: <%= @goal.description %></p>
+<h3><%= pluralize(@goal.categories.count, "Category") %></h3>
+<% @goal.categories.each do |c| %>
+  <h3><%= c.name %></h3>
+<% end %>
