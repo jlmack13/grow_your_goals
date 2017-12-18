@@ -47,6 +47,7 @@ class GoalsController < ApplicationController
     end
   end
 
+  #add notice about goal being deleted
   def destroy
     @goal.destroy
   end

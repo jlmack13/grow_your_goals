@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @tasks = current_user.tasks
   end
@@ -20,12 +20,25 @@ class TasksController < ApplicationController
   end
 
   def edit
+    if current_user == @task.user
+      @task = Task.find_by_id(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def update
+    @goal = Goal.find_by_id(params[:task][:goal_id])
+    if @task.update(task_params)
+      redirect_to goal_path(@goal)
+    else
+      render :edit
+    end
   end
 
+  #add notices about deleted task
   def destroy
+    @task.destroy
   end
 
   private
