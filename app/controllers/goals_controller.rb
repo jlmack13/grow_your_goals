@@ -23,10 +23,20 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @tasks = @goal.tasks
+    #TODO only allow user to view their own goals
+    if current_user == @goal.user
+      @tasks = @goal.tasks
+    else
+      redirect_to '/'
+    end
   end
 
   def edit
+    if current_user == @goal.user
+      @tasks = @goal.tasks
+    else
+      redirect_to '/'
+    end
   end
 
   def update
