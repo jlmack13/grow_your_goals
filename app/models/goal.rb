@@ -9,9 +9,9 @@ class Goal < ApplicationRecord
   #TODO add validation for dates
 
   #scope method
-  scope :completed, where(status: 'complete')
+  scope :completed, -> {where(status: 'complete')}
 
-  
+
   accepts_nested_attributes_for :categories, reject_if: :all_blank
   accepts_nested_attributes_for :tasks, reject_if: :all_blank
 

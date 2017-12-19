@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :goals do
     resources :tasks, only: [:new, :edit]
   end
-
+  get '/garden' => 'goals#garden'
   resources :tasks
 
   devise_for :users

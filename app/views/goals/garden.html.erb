@@ -1,0 +1,5 @@
+<h1>Welcome to Your Garden</h1>
+<p>Here you can see all the past goals that you have accomplished.</p>
+<% @goals.each do |goal| %>
+  <h3><%= goal.name %></h3>
+<% end %>

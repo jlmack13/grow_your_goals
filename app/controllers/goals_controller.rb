@@ -7,6 +7,10 @@ class GoalsController < ApplicationController
     @goals = current_user.goals
   end
 
+  def garden
+    @goals = current_user.goals.completed
+  end
+
   def new
     @goal = Goal.new
     @goal.categories.build
@@ -59,7 +63,7 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:name, :description, :start_date, :end_date, category_ids:[], categories_attributes:[:name], tasks_attributes:[:name])
+    params.require(:goal).permit(:name, :description, :status, :start_date, :end_date, category_ids:[], categories_attributes:[:name], tasks_attributes:[:name])
   end
 
 end

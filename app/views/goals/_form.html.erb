@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :status %>
+    <%= f.select :status, options_for_select([["Incomplete", "incomplete"], ["In Progress", "in_progress"], ["Complete", "complete"]]) %>
+  </div>
+
+  <div class="field">
     <%= f.label :start_date %>
     <%= f.date_select :start_date %><br>
   </div>
