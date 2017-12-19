@@ -19,6 +19,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    @task = Task.find_by_id(params[:id])
+  end
+
   def edit
     if current_user == @task.user
       @task = Task.find_by_id(params[:id])
