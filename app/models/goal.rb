@@ -9,7 +9,8 @@ class Goal < ApplicationRecord
   #TODO add validation for dates
 
   #scope methods
-  scope :completed, -> {where(status: 'Complete')}
+  scope :complete, -> {where(status: 'Complete')}
+  scope :incomplete, -> {where.not(status: 'Complete')}
   scope :in_progress, -> {where(status: 'In Progress')}
 
 

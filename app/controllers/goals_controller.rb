@@ -4,11 +4,11 @@ class GoalsController < ApplicationController
 
   def index
     #TODO change this so that it's only the user's goals
-    @goals = current_user.goals
+    @goals = current_user.goals.incomplete
   end
 
   def garden
-    @goals = current_user.goals.completed
+    @goals = current_user.goals.complete
   end
 
   def new

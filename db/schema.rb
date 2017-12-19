@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20171216180120) do
   create_table "goals", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "status"
+    t.string "status", default: "Incomplete"
     t.integer "user_id"
     t.date "start_date"
     t.date "end_date"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20171216180120) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "status"
+    t.string "status", default: "Incomplete"
     t.integer "goal_id"
     t.date "start_date"
     t.date "end_date"
