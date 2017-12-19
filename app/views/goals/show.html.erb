@@ -11,3 +11,6 @@
   <h4><%= a.name %></h4>
 <% end %>
 <%= link_to "New Task", new_goal_task_path(@goal) %>
+
+<%= link_to "Edit Goal", new_goal_task_path(@goal) %>
+<%= link_to "Delete Goal", goal_path(@goal), method: :delete %>

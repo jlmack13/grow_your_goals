@@ -1,4 +1,9 @@
 <h1>Welcome, <%= current_user.name %></h1>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <% @goals.each do |goal| %>
   <h3><%= link_to goal.name, goal_path(goal) %></h3>
 <% end %>

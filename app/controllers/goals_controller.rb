@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_goal, only: [:show, :edit, :update]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   def index
     #TODO change this so that it's only the user's goals
@@ -53,7 +53,13 @@ class GoalsController < ApplicationController
 
   #add notice about goal being deleted
   def destroy
-    @goal.destroy
+    if current_user == @goal.user
+      @goal.destroy
+      flash[:notice] = "Goal successfully deleted"
+      redirect_to '/'
+    else
+      redirect_to '/'
+    end
   end
 
   private
