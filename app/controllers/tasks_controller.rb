@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @tasks = current_user.tasks
@@ -20,11 +21,9 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find_by_id(params[:id])
   end
 
   def edit
-    @task = Task.find_by_id(params[:id])
     if current_user == @task.goal.user
       render :edit
     else
@@ -47,6 +46,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def set_task
+    @task = Task.find_by_id(params[:id])
+  end
 
   def task_params
     params.require(:task).permit(:name, :status, :goal_id)

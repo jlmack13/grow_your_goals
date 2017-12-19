@@ -10,7 +10,16 @@
 <% @goal.tasks.each do |a| %>
   <h4><%= a.name %></h4>
 <% end %>
-<%= link_to "New Task", new_goal_task_path(@goal) %>
+<div class="btn btn-secondary button">
+  <%= link_to "New Task", new_goal_task_path(@goal) %>
+</div><br>
 
-<%= link_to "Edit Goal", new_goal_task_path(@goal) %>
-<%= link_to "Delete Goal", goal_path(@goal), method: :delete %>
+<br>
+
+<div class="btn btn-info button">
+  <%= link_to "Edit Goal", edit_goal_path(@goal) %>
+</div>
+
+<div class="btn btn-danger button">
+  <%= link_to "Delete Goal", goal_path(@goal), method: :delete %>
+</div>

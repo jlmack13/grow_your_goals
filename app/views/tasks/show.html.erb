@@ -1,2 +1,10 @@
 <h1>This is the task show page</h1>
 <h2><%= @task.name %></h2>
+<h4><%= @task.status %></h4>
+<div class="btn btn-info button">
+  <%= link_to "Edit Task", edit_goal_task_path(@task) %>
+</div>
+
+<div class="btn btn-danger button">
+  <%= link_to "Delete Task", task_path(@task), method: :delete %>
+</div>
