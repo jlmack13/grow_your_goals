@@ -24,8 +24,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    if current_user == @task.user
-      @task = Task.find_by_id(params[:id])
+    @task = Task.find_by_id(params[:id])
+    if current_user == @task.goal.user
+      render :edit
     else
       redirect_to '/'
     end
