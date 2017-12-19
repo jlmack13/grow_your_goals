@@ -8,17 +8,20 @@ class Goal < ApplicationRecord
   validates_presence_of :name, :start_date, :end_date
   #TODO add validation for dates
 
-  #scope method
+  #scope methods
   scope :completed, -> {where(status: 'complete')}
+  scope :in_progress, -> {where(status: 'in_progress')}
 
 
-  accepts_nested_attributes_for :categories, reject_if: :all_blank
+  #accepts_nested_attributes_for :categories, reject_if: :all_blank
   accepts_nested_attributes_for :tasks, reject_if: :all_blank
 
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
-      category = Category.find_or_create_by(category_attribute)
-      self.categories << category
+      if category_attribute[:name] != "" && !category_attribute[:name].nil
+        category = Category.find_or_create_by(category_attribute)
+        self.categories << category
+      end
     end
   end
 
