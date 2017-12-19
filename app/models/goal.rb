@@ -9,8 +9,8 @@ class Goal < ApplicationRecord
   #TODO add validation for dates
 
   #scope methods
-  scope :completed, -> {where(status: 'complete')}
-  scope :in_progress, -> {where(status: 'in_progress')}
+  scope :completed, -> {where(status: 'Complete')}
+  scope :in_progress, -> {where(status: 'In Progress')}
 
 
   #accepts_nested_attributes_for :categories, reject_if: :all_blank

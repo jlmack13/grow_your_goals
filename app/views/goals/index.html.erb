@@ -7,3 +7,7 @@
 <% @goals.each do |goal| %>
   <h3><%= link_to goal.name, goal_path(goal) %></h3>
 <% end %>
+
+<div class="btn btn-secondary button">
+  <%= link_to "New Goal", new_goal_path(@goal) %>
+</div><br>

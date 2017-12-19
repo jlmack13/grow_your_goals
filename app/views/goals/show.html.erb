@@ -2,10 +2,15 @@
 
 <h1>Goal: <%= @goal.name %></h1>
 <p>Description: <%= @goal.description %></p>
-<h3><%= pluralize(@goal.categories.count, "Category") %></h3>
-<% @goal.categories.each do |c| %>
-  <h3><%= c.name %></h3>
+<p>Status: <%= @goal.status %></p>
+
+<% if !@goal.categories.empty? %>
+  <h3>Category: </h3>
+  <% @goal.categories.each do |c| %>
+    <h3><%= c.name %></h3>
+  <% end %>
 <% end %>
+
 <h3>Tasks:</h3>
 <% @goal.tasks.each do |a| %>
   <h4><%= a.name %></h4>
