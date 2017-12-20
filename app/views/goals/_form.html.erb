@@ -42,7 +42,7 @@
     <br>
 
     <div class="field form-group grow-form">
-      <%= f.label :categories, 'Categories' %><br>
+      <h4>Choose a Category:</h4><br>
       <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, :class => 'form-control' %><br>
     </div>
 
@@ -56,24 +56,37 @@
 
     <h4>Add Tasks:</h4>
     <p>To start, set 3 tasks that you can take to achieve your goal. Don't worry! You can add more later if you wish.</p>
-    <div class="field form-group row grow-form">
+
+    <hr>
+    <div class="field form-group grow-form goal-task-form">
+      <h5 class="task-label">Task #1:</h5>
       <%= f.fields_for :tasks, @goal.tasks.build do |task_fields| %>
-        <%= task_fields.label :name, "Task 1" %>
+        <%= task_fields.label :name %>
         <%= task_fields.text_field :name, :class => 'form-control' %><br>
+        <%= task_fields.label :description %>
+        <%= task_fields.text_field :description, :class => 'form-control' %><br>
       <% end %>
     </div>
 
-    <div class="field form-group row grow-form">
+    <hr>
+    <div class="field form-group grow-form goal-task-form">
+      <h5 class="task-label">Task #2:</h5>
       <%= f.fields_for :tasks, @goal.tasks.build do |task_fields| %>
-        <%= task_fields.label :name, "Task 2" %>
+        <%= task_fields.label :name %>
         <%= task_fields.text_field :name, :class => 'form-control' %><br>
+        <%= task_fields.label :description %>
+        <%= task_fields.text_field :description, :class => 'form-control' %><br>
       <% end %>
     </div>
 
-    <div class="field form-group row grow-form">
+    <hr>
+    <div class="field form-group grow-form goal-task-form">
+      <h5 class="task-label">Task #3:</h5>
       <%= f.fields_for :tasks, @goal.tasks.build do |task_fields| %>
-        <%= task_fields.label :name, "Task 3" %>
+        <%= task_fields.label :name%>
         <%= task_fields.text_field :name, :class => 'form-control' %><br>
+        <%= task_fields.label :description %>
+        <%= task_fields.text_field :description, :class => 'form-control' %><br>
       <% end %>
     </div><br>
 
