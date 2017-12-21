@@ -26,7 +26,7 @@ class Goal < ApplicationRecord
     end
   end
 
-  #progress
+  #progress method
   def progress
     total = self.tasks.count
     current = self.tasks.complete.count
