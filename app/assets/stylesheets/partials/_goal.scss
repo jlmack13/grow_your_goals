@@ -11,12 +11,34 @@
 
 
 #show-goal {
-  #goal-name {
-    text-align: left;
+  h3 {
+    font-family: $secondary_font;
+    font-weight: bold;
+    font-size: 3em;
+  }
+  p {
+    color: $secondary_accent_color;
+    font-family: $primary_font;
+    font-size: 14px;
+    font-weight: lighter;
   }
   .left-goal-box {
     width: 58%;
     float: left;
+    text-align: left;
+    .status {
+      text-transform: uppercase;
+      font-weight: bolder;
+    }
+    .status-Incomplete {
+      color: red;
+    }
+    .status-In {
+      color: orange;
+    }
+    .status-Complete {
+      color: green;
+    }
   }
   .right-goal-box {
     width: 40%;
