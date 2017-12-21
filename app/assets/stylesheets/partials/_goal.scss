@@ -1,0 +1,25 @@
+//Goal Styles
+.goal-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .goal {
+    margin: 2em;
+  }
+}
+
+
+#show-goal {
+  #goal-name {
+    text-align: left;
+  }
+  .left-goal-box {
+    width: 58%;
+    float: left;
+  }
+  .right-goal-box {
+    width: 40%;
+    float: right;
+  }
+}

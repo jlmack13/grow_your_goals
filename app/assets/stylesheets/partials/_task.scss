@@ -1,0 +1,21 @@
+.task-box {
+  display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .task {
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: $task_bg_color;
+    display: flex;
+    color: white;
+    font-family: $primary_font;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 3em;
+  }
+}
