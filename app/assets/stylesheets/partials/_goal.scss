@@ -26,6 +26,20 @@
     width: 58%;
     float: left;
     text-align: left;
+    h3 {
+      font-family: $secondary_font;
+      color: $primary_accent_color;
+      font-size: 36px;
+      padding-top: 10px;
+    }
+    .category {
+      display: flex;
+      h6 {
+        padding-right: 10px;
+        color: $primary_accent_color;
+        text-transform: uppercase;
+      }
+    }
     .status {
       text-transform: uppercase;
       font-weight: bolder;
