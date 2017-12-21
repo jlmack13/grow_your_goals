@@ -35,4 +35,19 @@ class Goal < ApplicationRecord
     percent
   end
 
+  #plant_image method
+  def plant_image
+    if self.progress.between?(0,25)
+      "stage-1"
+    elsif self.progress.between?(26,50)
+      "stage-2"
+    elsif self.progress.between?(51,75)
+      "stage-3"
+    elsif self.progress.between?(75,99)
+      "stage-4"
+    else
+      "stage-5"
+    end
+  end
+
 end
