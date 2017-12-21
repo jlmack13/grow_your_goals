@@ -1,18 +1,14 @@
 <h1>Welcome, <%= current_user.name %></h1>
 
-<% if flash[:notice] %>
-    <div class="alert alert-dismissible alert-success notice">
-      <strong>Oh snap!</strong> <a href="#" class="alert-link"><%= flash[:notice] %>
-    </div>
-<% end %>
-
 <div class="goal-box">
   <% @goals.each do |goal| %>
-  <div class="goal">
-    <%= image_tag("potted-plant.png", width: "250") %>
-    <h3><%= link_to goal.name, goal_path(goal) %></h3>
-    <div></div>
-  </div>
+    <div class="goal">
+      <%= image_tag("potted-plant.png", width: "200") %>
+      <h3><%= link_to goal.name, goal_path(goal) %></h3>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<%= goal.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= goal.progress %>%"></div>
+      </div>
+    </div>
   <% end %>
 </div>
 

@@ -26,4 +26,13 @@ class Goal < ApplicationRecord
     end
   end
 
+  #progress
+  def progress
+    total = self.tasks.count
+    current = self.tasks.complete.count
+    progress = current / total .to_f
+    percent = progress * 100
+    percent
+  end
+
 end
