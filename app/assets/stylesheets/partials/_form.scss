@@ -1,0 +1,35 @@
+//Form Styles
+form {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding-bottom: 30px;
+  padding-top:30px;
+  input[type = "checkbox"] {
+    margin: .75em;
+  }
+  h4 {
+    font-family: $secondary_font;
+    font-weight: bold;
+    color: $secondary_accent_color;
+    font-size: 32px;
+    margin-top: 1em;
+  }
+  label {
+    font-family: $secondary_font;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 1em;
+  }
+  .grow-form {
+    max-width: 600px;
+    margin: 0 auto !important; //Find a way to do this without using important
+  }
+  .goal-task-form {
+    text-align: left;
+  }
+  #goal-button {
+    background-color: $secondary_accent_color;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+}

@@ -2,7 +2,7 @@ class Goal < ApplicationRecord
   belongs_to :user
   has_many :goal_categories
   has_many :categories, through: :goal_categories
-  has_many :tasks
+  has_many :tasks, dependent: :delete_all
 
   #validation
   validates_presence_of :name, :start_date, :end_date

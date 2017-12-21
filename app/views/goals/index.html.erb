@@ -1,12 +1,20 @@
 <h1>Welcome, <%= current_user.name %></h1>
 
 <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
+    <div class="alert alert-dismissible alert-success notice">
+      <strong>Oh snap!</strong> <a href="#" class="alert-link"><%= flash[:notice] %>
+    </div>
 <% end %>
 
-<% @goals.each do |goal| %>
-  <h3><%= link_to goal.name, goal_path(goal) %></h3>
-<% end %>
+<div class="goal-box">
+  <% @goals.each do |goal| %>
+  <div class="goal">
+    <%= image_tag("potted-plant.png", width: "250") %>
+    <h3><%= link_to goal.name, goal_path(goal) %></h3>
+    <div></div>
+  </div>
+  <% end %>
+</div>
 
 <div class="btn btn-secondary button">
   <%= link_to "New Goal", new_goal_path(@goal) %>
