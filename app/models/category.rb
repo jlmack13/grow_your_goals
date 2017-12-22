@@ -3,5 +3,6 @@ class Category < ApplicationRecord
   has_many :goals, through: :goal_categories
 
   validates_uniqueness_of :name
+  validates :name, length: {maximum: 10}
 
 end

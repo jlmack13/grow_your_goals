@@ -23,7 +23,7 @@
         <div class="category">
           <h6>CATEGORY: </h6>
           <% @goal.categories.each do |c| %>
-          <h6><%= c.name %><% if c != @goal.categories.last%> , <% end %></h6>
+            <h6><%= c.name %><% if c != @goal.categories.last%> , <% end %></h6>
           <% end %>
         </div>
       <% end %>
