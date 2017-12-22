@@ -1,5 +1,10 @@
 <h1>Welcome to Your Garden</h1>
 <p>Here you can see all the past goals that you have accomplished.</p>
-<% @goals.each do |goal| %>
-  <h3><%= link_to goal.name, goal_path(goal) %></h3>
-<% end %>
+<div class="goal-box">
+  <% @goals.each do |goal| %>
+    <div class="goal">
+      <%= image_tag("plant-#{goal.plant_image}", width: "100") %>
+      <h3><%= link_to goal.name, goal_path(goal) %></h3>
+    </div>
+  <% end %>
+</div>

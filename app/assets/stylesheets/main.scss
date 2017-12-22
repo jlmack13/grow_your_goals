@@ -10,10 +10,10 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4,  {
     color: $secondary_accent_color;
   }
-  h5, h6 {
+  h5, h6, a {
     color: $primary_accent_color;
   }
   .main-container {

@@ -28,7 +28,9 @@
         </div>
       <% end %>
 
-      <h3><%= distance_of_time_in_words(Date.current, @goal.end_date).capitalize%>&nbsp; Remaining</h3>
+      <% if @goal.status != "Complete" %>
+        <h3><%= distance_of_time_in_words(Date.current, @goal.end_date).capitalize%>&nbsp; Remaining</h3>
+      <% end %>
 
 
     </div>

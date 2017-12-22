@@ -1,4 +1,7 @@
 <h1>Your Tasks</h1>
-<% @tasks.each do |t| %>
-  <h3><%= link_to t.name, task_path(t) %></h3>
-<% end %>
+
+<div class="task-box">
+  <% @tasks.each do |a| %>
+    <%= link_to a.name, task_path(a), :class => 'task' %>
+  <% end %>
+</div>
