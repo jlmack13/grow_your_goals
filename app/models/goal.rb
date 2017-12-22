@@ -6,6 +6,7 @@ class Goal < ApplicationRecord
 
   #validation
   validates_presence_of :name, :start_date, :end_date
+  validate :date_in_future
   #TODO add validation for dates
 
   #scope methods
@@ -57,6 +58,13 @@ class Goal < ApplicationRecord
       else
         "stage-5"
       end
+    end
+  end
+
+  #validate date
+  def date_in_future
+    if !self.end_date.future?
+      errors.add(:end_date, "Date must be in the future.")
     end
   end
 
