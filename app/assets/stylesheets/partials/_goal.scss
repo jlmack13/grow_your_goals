@@ -3,12 +3,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   .goal {
     margin: 2em;
   }
 }
-
 
 #show-goal {
   h3 {
@@ -22,40 +21,54 @@
     font-size: 14px;
     font-weight: lighter;
   }
-  .left-goal-box {
-    width: 58%;
-    float: left;
-    text-align: left;
-    h3 {
-      font-family: $secondary_font;
+  .goal-info {
+    align-items: flex-end;
+  }
+}
+
+.right-goal-box {
+  width: 40%;
+  float: right;
+  margin: 0 auto;
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  .goal-buttons {
+    margin-top: 30px;
+  }
+}
+
+.left-goal-box {
+  width: 58%;
+  float: left;
+  text-align: left;
+  margin-bottom: 20%;
+  h3 {
+    font-family: $secondary_font;
+    color: $primary_accent_color;
+    font-size: 36px;
+    padding-top: 10px;
+  }
+  .category {
+    display: flex;
+    h6 {
+      padding-right: 10px;
       color: $primary_accent_color;
-      font-size: 36px;
-      padding-top: 10px;
-    }
-    .category {
-      display: flex;
-      h6 {
-        padding-right: 10px;
-        color: $primary_accent_color;
-        text-transform: uppercase;
-      }
-    }
-    .status {
       text-transform: uppercase;
-      font-weight: bolder;
-    }
-    .status-Incomplete {
-      color: red;
-    }
-    .status-In {
-      color: orange;
-    }
-    .status-Complete {
-      color: green;
     }
   }
-  .right-goal-box {
-    width: 40%;
-    float: right;
+  .status {
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
+  .status-Incomplete {
+    color: red;
+  }
+  .status-In {
+    color: orange;
+  }
+  .status-Complete {
+    color: green;
   }
 }

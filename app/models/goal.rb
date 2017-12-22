@@ -19,7 +19,7 @@ class Goal < ApplicationRecord
 
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
-      if category_attribute[:name] != "" && !category_attribute[:name].nil
+      if category_attribute[:name] != "" && !category_attribute[:name].nil?
         category = Category.find_or_create_by(category_attribute)
         self.categories << category
       end
@@ -37,16 +37,26 @@ class Goal < ApplicationRecord
 
   #plant_image method
   def plant_image
-    if self.progress.between?(0,25)
-      "stage-1"
-    elsif self.progress.between?(26,50)
-      "stage-2"
-    elsif self.progress.between?(51,75)
-      "stage-3"
-    elsif self.progress.between?(75,99)
-      "stage-4"
+    if self.tasks.empty?
+      if self.status == "Incomplete"
+        "stage-1"
+      elsif self.status == "In Progress"
+        "stage-3"
+      elsif self.status == "Complete"
+        "stage-5"
+      end
     else
-      "stage-5"
+      if self.progress.between?(0,25)
+        "stage-1"
+      elsif self.progress.between?(26,50)
+        "stage-2"
+      elsif self.progress.between?(51,75)
+        "stage-3"
+      elsif self.progress.between?(75,99)
+        "stage-4"
+      else
+        "stage-5"
+      end
     end
   end
 
