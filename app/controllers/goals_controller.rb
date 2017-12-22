@@ -20,6 +20,7 @@ class GoalsController < ApplicationController
   def create
     @goal = current_user.goals.build(goal_params)
     if @goal.save
+      flash[:notice] = "Goal successfully created!"
       redirect_to goal_path(@goal)
     else
       render :new
@@ -45,6 +46,7 @@ class GoalsController < ApplicationController
 
   def update
     if @goal.update(goal_params)
+      flash[:notice] = "Goal successfully updated!"
       redirect_to goal_path(@goal)
     else
       render :edit
@@ -55,7 +57,7 @@ class GoalsController < ApplicationController
   def destroy
     if current_user == @goal.user
       @goal.destroy
-      flash[:notice] = "Goal successfully deleted"
+      flash[:notice] = "Goal successfully deleted!"
       redirect_to '/'
     else
       redirect_to '/'

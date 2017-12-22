@@ -14,6 +14,7 @@ class TasksController < ApplicationController
     @goal = Goal.find_by_id(params[:task][:goal_id])
     @task = @goal.tasks.build(task_params)
     if @task.save
+      flash[:notice] = "Task successfully created!"
       redirect_to goal_path(@goal)
     else
       render :new
@@ -34,6 +35,7 @@ class TasksController < ApplicationController
   def update
     @goal = Goal.find_by_id(params[:task][:goal_id])
     if @task.update(task_params)
+      flash[:notice] = "Task successfully updated!"
       redirect_to goal_path(@goal)
     else
       render :edit
@@ -42,7 +44,13 @@ class TasksController < ApplicationController
 
   #add notices about deleted task
   def destroy
-    @task.destroy
+    if current_user == @task.goal.user
+      @task.destroy
+      flash[:notice] = "Task successfully deleted!"
+      redirect_to '/'
+    else
+      redirect_to '/'
+    end
   end
 
   private
