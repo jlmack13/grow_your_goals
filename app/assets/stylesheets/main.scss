@@ -41,3 +41,24 @@ body {
 .plant_image {
   width: 200px;
 }
+
+//Error Styles
+.field_with_errors {
+  width: 100%;
+  text-align: left;
+  input {
+    border: 3px solid red;
+  }
+}
+
+div#error_explanation {
+  h2 {
+    text-transform: uppercase;
+    color: red;
+    font-size: 24px;
+  }
+  ul {
+    color: red;
+    list-style: none;
+  }
+}
