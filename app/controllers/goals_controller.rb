@@ -28,7 +28,6 @@ class GoalsController < ApplicationController
   end
 
   def show
-    #TODO only allow user to view their own goals
     if current_user == @goal.user
       @tasks = @goal.tasks
     else
@@ -53,7 +52,6 @@ class GoalsController < ApplicationController
     end
   end
 
-  #add notice about goal being deleted
   def destroy
     if current_user == @goal.user
       @goal.destroy

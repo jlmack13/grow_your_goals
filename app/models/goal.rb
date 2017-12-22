@@ -8,7 +8,7 @@ class Goal < ApplicationRecord
   validates_presence_of :name, :start_date, :end_date
   validates :name, length: {maximum: 30}
   validate :date_in_future
-  #TODO add validation for dates
+
 
   #scope methods
   scope :complete, -> {where(status: 'Complete')}
