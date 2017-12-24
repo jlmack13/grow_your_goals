@@ -14,7 +14,9 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @goal.categories.build
-    3.times { @goal.tasks.build }
+    @goal.tasks.build(name: "Task 1")
+    @goal.tasks.build(name: "Task 2")
+    @goal.tasks.build(name: "Task 3")
   end
 
   def create
