@@ -21,7 +21,6 @@ class GoalsController < ApplicationController
   end
 
   def create
-    binding.pry
     @goal = current_user.goals.build(goal_params)
     if @goal.save
       flash[:notice] = "Goal successfully created!"
