@@ -24,14 +24,6 @@ class Goal < ApplicationRecord
     category_attributes.values.each do |category_attribute|
       if category_attribute[:name] != "" && !category_attribute[:name].nil?
         category = Category.find_or_create_by(name: category_attribute[:name])
-        # if category_attribute[:goal_categories][:subcategory] != ""  && !category_attribute[:goal_categories][:subcategory].nil?
-        #   goal_category = self.goal_categories.build(category_id: category.id, subcategory: category_attribute[:goal_categories][:subcategory])
-        #   goal_category.save
-           # goal_category = GoalCategory.find_or_create_by(subcategory: categories_attribute[:subcategory])
-           # new_sub = category.goal_categories.find(goal_category.id)
-           # new_sub.update(subcategory: goal_category.subcategory)
-           # goal_category.save
-        # end
         self.categories << category
       end
     end
