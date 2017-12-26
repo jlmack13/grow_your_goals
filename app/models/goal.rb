@@ -18,12 +18,30 @@ class Goal < ApplicationRecord
 
   #accepts_nested_attributes_for :categories, reject_if: :all_blank
   accepts_nested_attributes_for :tasks, reject_if: :all_blank
+  accepts_nested_attributes_for :goal_categories
 
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
       if category_attribute[:name] != "" && !category_attribute[:name].nil?
-        category = Category.find_or_create_by(category_attribute)
+        category = Category.find_or_create_by(name: category_attribute[:name])
+        # if category_attribute[:goal_categories][:subcategory] != ""  && !category_attribute[:goal_categories][:subcategory].nil?
+        #   goal_category = self.goal_categories.build(category_id: category.id, subcategory: category_attribute[:goal_categories][:subcategory])
+        #   goal_category.save
+           # goal_category = GoalCategory.find_or_create_by(subcategory: categories_attribute[:subcategory])
+           # new_sub = category.goal_categories.find(goal_category.id)
+           # new_sub.update(subcategory: goal_category.subcategory)
+           # goal_category.save
+        # end
         self.categories << category
+      end
+    end
+  end
+
+  def goal_categories_attributes=(goal_categories_attributes)
+    goal_categories_attributes.values.each do |goal_category_attribute|
+      if goal_category_attribute[:subcategory] != "" && !goal_category_attribute[:subcategory].nil?
+        goal_category = GoalCategory.find_or_create_by(goal_category_attribute)
+        self.goal_categories << goal_category
       end
     end
   end

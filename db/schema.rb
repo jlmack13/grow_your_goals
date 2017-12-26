@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171219211519) do
   create_table "goal_categories", force: :cascade do |t|
     t.integer "goal_id"
     t.integer "category_id"
+    t.string "subcategory"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_goal_categories_on_category_id"

@@ -54,6 +54,16 @@
       <% end %>
     </div>
 
+    <h4>Create A Subcategory:</h4>
+    <div class="field form-group row grow-form">
+      <%= f.fields_for :goal_categories, @goal.goal_categories.build do |goal_category_fields| %>
+        <%= goal_category_fields.label :category %>
+        <%= goal_category_fields.collection_select :category_id, Category.all, :id, :name, :class => 'form-control' %>
+        <%= goal_category_fields.label :subcategory %>
+        <%= goal_category_fields.text_field :subcategory %>
+      <% end %>
+    </div>
+
     <h4>Add Tasks:</h4>
     <p>To start, set 3 tasks that you can take to achieve your goal. Don't worry! You can add more later if you wish.</p>
 

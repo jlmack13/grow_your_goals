@@ -14,12 +14,14 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @goal.categories.build
+    @goal.goal_categories.build
     @goal.tasks.build(name: "Task 1")
     @goal.tasks.build(name: "Task 2")
     @goal.tasks.build(name: "Task 3")
   end
 
   def create
+    binding.pry
     @goal = current_user.goals.build(goal_params)
     if @goal.save
       flash[:notice] = "Goal successfully created!"
@@ -71,7 +73,7 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:name, :description, :status, :start_date, :end_date, category_ids:[], categories_attributes:[:name], tasks_attributes:[:name, :description])
+    params.require(:goal).permit(:name, :description, :status, :start_date, :end_date, category_ids:[], categories_attributes:[:name], goal_categories_attributes:[:subcategory, :category_id], tasks_attributes:[:name, :description])
   end
 
 end
