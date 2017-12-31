@@ -18,4 +18,15 @@ class User < ApplicationRecord
         user.password = Devise.friendly_token[0,20]
       end
   end
+
+  def most_completed_tasks
+    most = self.goals.first.tasks.complete.count
+    @goal_with_most = self.goals.first
+    self.goals.each do |goal|
+      if goal.tasks.complete.count > most
+        @goal_with_most = goal
+      end
+    end
+    @goal_with_most
+  end
 end

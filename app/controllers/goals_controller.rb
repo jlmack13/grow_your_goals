@@ -1,6 +1,12 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  helper_method :most_completed_tasks
+
+  def most_completed_tasks
+    @user = current_user
+    @user.most_completed_tasks
+  end
 
   def index
     #TODO change this so that it's only the user's goals
