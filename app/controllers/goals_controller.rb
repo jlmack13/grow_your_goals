@@ -9,7 +9,6 @@ class GoalsController < ApplicationController
   end
 
   def index
-    #TODO change this so that it's only the user's goals
     @goals = current_user.goals.incomplete
   end
 
