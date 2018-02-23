@@ -14,7 +14,7 @@
       </div>
       <button type="button" class="js-more" data-id="<%= goal.id %>">More Info</button>
       <!-- More Info Section -->
-      <div class="more-info">
+      <div class="more-info-<%= goal.id %>">
         <p class="description"></p>
         <p class="start_date"></p>
         <p class="end_date"></p>
@@ -26,14 +26,3 @@
 <div class="btn btn-success button">
   <%= link_to "New Goal", new_goal_path(@goal) %>
 </div><br>
-
-<script type="text/text/javascript" charset="utf-8">
-  $(function () {
-    $('.js-more').on('click', function() {
-      var id = $(this).data("id");
-      $.get("/goals/" + id + ".json", function(data) {
-        console.log(data);
-      });
-    });
-  });
-</script>
