@@ -12,6 +12,13 @@
       <div class="progress">
         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<%= goal.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= goal.progress %>%"></div>
       </div>
+      <button type="button" class="js-more" data-id="<%= goal.id %>">More Info</button>
+      <!-- More Info Section -->
+      <div class="more-info">
+        <p class="description"></p>
+        <p class="start_date"></p>
+        <p class="end_date"></p>
+      </div>
     </div>
   <% end %>
 </div>
@@ -19,3 +26,14 @@
 <div class="btn btn-success button">
   <%= link_to "New Goal", new_goal_path(@goal) %>
 </div><br>
+
+<script type="text/text/javascript" charset="utf-8">
+  $(function () {
+    $('.js-more').on('click', function() {
+      var id = $(this).data("id");
+      $.get("/goals/" + id + ".json", function(data) {
+        console.log(data);
+      });
+    });
+  });
+</script>

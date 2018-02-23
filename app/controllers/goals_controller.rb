@@ -42,6 +42,10 @@ class GoalsController < ApplicationController
   def show
     if current_user == @goal.user
       @tasks = @goal.tasks
+      respond_to do |format|
+        format.html
+        format.json { render json: @goal }
+      end
     else
       redirect_to '/'
     end
