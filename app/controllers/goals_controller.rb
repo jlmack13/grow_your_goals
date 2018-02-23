@@ -10,6 +10,10 @@ class GoalsController < ApplicationController
 
   def index
     @goals = current_user.goals.incomplete
+    respond_to do |format|
+      format.html
+      format.json {render json: @goals}
+    end
   end
 
   def garden
