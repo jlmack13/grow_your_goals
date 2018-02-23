@@ -24,10 +24,11 @@ function Goal(attributes) {
 
 //Write a function to build proper HTML
 Goal.prototype.format = function() {
-  console.log(this)
-  const goalName = "<h3>" + this.name + "</h3>"
-  console.log(goalName);
-  return goalName;
+  const open = '<div class="goal">';
+  const goalName = "<h3>" + this.name + "</h3>";
+  const goalDescription = "<p>" + this.description + "</p>";
+  const close = '</div>'
+  return open + goalName + goalDescription + close;
 };
 
 
