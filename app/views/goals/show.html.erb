@@ -43,7 +43,7 @@
 
     <!-- RIGHT SIDE -->
     <div class="right-goal-box">
-      <%= image_tag("plant-#{@goal.plant_image}", width: "200") %>
+      <!-- <%= image_tag("plant-#{@goal.plant_image}", width: "200") %> -->
         <div class="goal-buttons">
           <div class="btn btn-info button">
             <%= link_to "Edit Goal", edit_goal_path(@goal) %>
@@ -65,7 +65,7 @@
   <div class="task-box">
     <ul class="task-list">
       <% @goal.tasks.each do |a| %>
-        <li><%= link_to a.name, task_path(a), :class => 'new-task' %><li>
+        <li><a href="/tasks/<%= a.id %>"><%= a.name %></a></li>
       <% end %>
     </ul>
   </div>
