@@ -13,6 +13,8 @@ $(function () {
     $("#showGoals").hide();
   });
 
+
+
   //NEXT GOAL BUTTON (SHOW GOAL FROM API)
   $(".js-next").on("click", function(e) {
     e.preventDefault();

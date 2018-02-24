@@ -65,14 +65,32 @@
   <div class="task-box">
     <ul class="task-list">
       <% @goal.tasks.each do |a| %>
-        <li><a href="/tasks/<%= a.id %>"><%= a.name %></a></li>
+          <li><a href="/tasks/<%= a.id %>"><%= a.name%></a></li>
       <% end %>
     </ul>
   </div>
 
 <!-- END OF TASKS ROW -->
-
-  <div class="btn btn-success button">
-    <%= link_to "New Task", new_goal_task_path(@goal) %>
-  </div><br>
+<div class="">
+  <h3>Create a New Task</h3>
+  <%= render ("tasks/form") %>
 </div>
+
+</div>
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    //CREATE NEW TASK FOR GOAL SHOW Page
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+      var values = $(this).serialize();
+      console.log(values)
+      var posting = $.post('/tasks', values);
+      posting.done(function(data) {
+        var task = new Task(data);
+        $(".task-list").append(task.format());
+      });
+    });
+    $('form').trigger("reset");
+  });
+</script>

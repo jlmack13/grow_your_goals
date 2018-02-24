@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     @task = @goal.tasks.build(task_params)
     if @task.save
       flash[:notice] = "Task successfully created!"
-      redirect_to goal_path(@goal)
+      render json: @task, status: 201 
     else
       render :new
     end
