@@ -34,7 +34,7 @@
       <% if @goal.status != "Complete" %>
         <h3><%= distance_of_time_in_words(Date.current, @goal.end_date).capitalize%>&nbsp; Remaining</h3>
       <% end %>
-    
+
       <a href="#" class="js-previous btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Previous Goal</a>
       <a href="#" class="js-next btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Next Goal</a>
 
@@ -62,13 +62,14 @@
 
 <!-- TASKS ROW -->
   <h3>Tasks:</h3>
-  <div class="goal-tasks row">
-    <div class="task-box">
+  <div class="task-box">
+    <ul class="task-list">
       <% @goal.tasks.each do |a| %>
-      <%= link_to a.name, task_path(a), :class => 'task' %>
+        <li><%= link_to a.name, task_path(a), :class => 'new-task' %><li>
       <% end %>
-    </div>
+    </ul>
   </div>
+
 <!-- END OF TASKS ROW -->
 
   <div class="btn btn-success button">
