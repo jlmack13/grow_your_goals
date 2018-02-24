@@ -1,7 +1,8 @@
 $(function () {
 
-  //redoing the first requirement with just one button that the user clicks to show them all their goals
-  $("#showGoals").on('click', function() {
+  //SHOW GOALS INDEX FROM API
+  $("#showGoals").on('click', function(e) {
+    e.preventDefault();
     $.get("/goals.json", function(data) {
       const goals = data;
       goals.forEach(function(goal) {
@@ -12,7 +13,7 @@ $(function () {
     $("#showGoals").hide();
   });
 
-  //NEXT GOAL BUTTON
+  //NEXT GOAL BUTTON (SHOW GOAL FROM API)
   $(".js-next").on("click", function(e) {
     e.preventDefault();
     $(".task-list").html("");
@@ -20,6 +21,10 @@ $(function () {
     var userGoals = $(".js-next").data("goals");
     var currentGoal = parseInt($(".js-next").attr("data-id"));
     var index = userGoals.indexOf(currentGoal) + 1;
+    if (index === userGoals.length) {
+      index = 0;
+    }
+    //testing this to see if i can create a loop with the buttons
     $.get("/goals/" + userGoals[index] + ".json", function(data) {
       //Set goal attributes
       $(".goal-name").text(data["name"]);
@@ -27,10 +32,8 @@ $(function () {
       $(".goal-status").text(data["status"]);
       //load the goals tasks
       const tasks = data["tasks"];
-      console.log(tasks)
       tasks.forEach(function(task) {
         let newTask = new Task(task);
-        console.log(newTask)
         $(".task-list").append(newTask.format());
       })
       // re-set the id to current on the link
@@ -47,6 +50,10 @@ $(function () {
     var userGoals = $(".js-previous").data("goals");
     var currentGoal = parseInt($(".js-previous").attr("data-id"));
     var index = userGoals.indexOf(currentGoal) - 1;
+    //check index to loop through to last goal if necessary
+    if (index < 0) {
+      index = userGoals.length - 1;
+    }
     $.get("/goals/" + userGoals[index] + ".json", function(data) {
       $(".goal-name").text(data["name"]);
       $(".goal-description").text(data["description"]);
@@ -75,7 +82,7 @@ $(function () {
 
 
 
-//Goal object
+//GOAL OBJECT MODEL
 function Goal(attributes) {
   this.id = attributes["id"];
   this.name = attributes["name"];
@@ -85,7 +92,7 @@ function Goal(attributes) {
   this.completed_date = attributes["completed_date"];
 };
 
-//Write a function to build proper HTML
+//PROTOTYPE FUNCTION TO FORMAT HTML OF GOALS
 Goal.prototype.format = function() {
   const html = `
     <div id="goal-${this.id}" class="goal">
@@ -97,7 +104,7 @@ Goal.prototype.format = function() {
   return html;
 };
 
-//Task object
+//TASK OBJECT MODEL
 function Task(attributes) {
   this.id = attributes["id"];
   this.name = attributes["name"];
@@ -107,6 +114,7 @@ function Task(attributes) {
   this.completed_date = attributes["completed_date"];
 };
 
+//PROTOTYPE FUNCTION TO FORMAT HTML OF TASKS
 Task.prototype.format = function() {
   const html = `
     <li id="task-${this.id}">
