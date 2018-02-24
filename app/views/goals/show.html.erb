@@ -9,17 +9,17 @@
 
     <!-- LEFT SIDE -->
     <div class="left-goal-box">
-      <h1 id="goal-name">Goal: <%= @goal.name %></h1>
+      <h1 class="goal-name">Goal: <%= @goal.name %></h1>
 
-      <div class="progress goal-bar">
+      <!-- <div class="progress goal-bar">
         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<%= @goal.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @goal.progress %>%"></div>
       </div>
-      <br>
+      <br> -->
 
-      <p><%= @goal.description %></p>
-      <p class="status status-<%= @goal.status %>"><%= @goal.status %></p>
+      <p class="goal-description"><%= @goal.description %></p>
+      <p class="goal-status" class="status status-<%= @goal.status %>"><%= @goal.status %></p>
 
-      <% if !@goal.categories.empty? %>
+      <!-- <% if !@goal.categories.empty? %>
         <div class="category">
           <h6>CATEGORY: </h6>
           <% @goal.categories.uniq.each do |c| %>
@@ -29,12 +29,12 @@
               )</h6><br>
           <% end %>
         </div>
-      <% end %>
+      <% end %> -->
 
       <% if @goal.status != "Complete" %>
         <h3><%= distance_of_time_in_words(Date.current, @goal.end_date).capitalize%>&nbsp; Remaining</h3>
       <% end %>
-
+      <a href="#" class="js-next btn-primary btn" data-id="<%=@goal.id%>">Next Goal...</a>
 
     </div>
     <!-- END OF LEFT SIDE -->
@@ -53,7 +53,6 @@
         </div>
       </div>
     <!-- END OF RIGHT SIDE -->
-
   </div>
 <!-- END OF INFO ROW-->
 

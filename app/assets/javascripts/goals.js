@@ -12,6 +12,19 @@ $(function () {
     $("#showGoals").hide();
   });
 
+  //Next Button to show next goal on goals show Page
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    console.log(nextId)
+    $.get("/goals/" + nextId + ".json", function(data) {
+      $(".goal-name").text(data["name"]);
+      $(".goal-description").text(data["description"]);
+      $(".goal-status").text(data["status"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+
   //More Info Button on Goals Index Page to render goal show page??
   // $('.js-more').on('click', function() {
   //   var id = $(this).data("id");
