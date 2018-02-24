@@ -13,17 +13,41 @@ $(function () {
   });
 
   //Next Button to show next goal on goals show Page
-  $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    console.log(nextId)
-    $.get("/goals/" + nextId + ".json", function(data) {
+  //not working because next goal doesn't belong to the user.
+  $(".js-next").on("click", function(e) {
+    e.preventDefault();
+    //get array of user's goals so can cycle through them
+    var userGoals = $(".js-next").data("goals");
+    var currentGoal = parseInt($(".js-next").attr("data-id"));
+    var index = userGoals.indexOf(currentGoal) + 1;
+    $.get("/goals/" + userGoals[index] + ".json", function(data) {
       $(".goal-name").text(data["name"]);
       $(".goal-description").text(data["description"]);
       $(".goal-status").text(data["status"]);
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
+      $(".js-previous").attr("data-id", data["id"]);
     });
   });
+
+  //load previous goal via previous goal button
+  $(".js-previous").on("click", function(e) {
+    e.preventDefault();
+    //get array of user's goals so can cycle through them
+    var userGoals = $(".js-previous").data("goals");
+    var currentGoal = parseInt($(".js-previous").attr("data-id"));
+    var index = userGoals.indexOf(currentGoal) - 1;
+    $.get("/goals/" + userGoals[index] + ".json", function(data) {
+      $(".goal-name").text(data["name"]);
+      $(".goal-description").text(data["description"]);
+      $(".goal-status").text(data["status"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+      $(".js-previous").attr("data-id", data["id"]);
+    });
+  });
+});
+
 
   //More Info Button on Goals Index Page to render goal show page??
   // $('.js-more').on('click', function() {
@@ -33,7 +57,7 @@ $(function () {
   //   });
   // });
 
-});
+
 
 //Goal object
 function Goal(attributes) {

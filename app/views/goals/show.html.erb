@@ -34,7 +34,9 @@
       <% if @goal.status != "Complete" %>
         <h3><%= distance_of_time_in_words(Date.current, @goal.end_date).capitalize%>&nbsp; Remaining</h3>
       <% end %>
-      <a href="#" class="js-next btn-primary btn" data-id="<%=@goal.id%>">Next Goal...</a>
+    
+      <a href="#" class="js-previous btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Previous Goal</a>
+      <a href="#" class="js-next btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Next Goal</a>
 
     </div>
     <!-- END OF LEFT SIDE -->
