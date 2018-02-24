@@ -10,7 +10,6 @@ $(function () {
       });
     });
     $("#showGoals").hide();
-
   });
 
   //More Info Button on Goals Index Page to render goal show page??
@@ -22,7 +21,6 @@ $(function () {
   // });
 
 });
-
 
 //Goal object
 function Goal(attributes) {
@@ -40,7 +38,7 @@ Goal.prototype.format = function() {
     <div id="goal-${this.id}" class="goal">
     <h3>${this.name}</h3>
     <p>${this.description}</p>
-    <button class="js-more btn btn-primary button" data-id="${this.id}">See More</button><br>
+    <a href="/goals/${this.id}" class="btn btn-primary button">See More</a><br>
     </div>
   `
   return html;
