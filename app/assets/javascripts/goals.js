@@ -1,4 +1,5 @@
 $(function () {
+
   //redoing the first requirement with just one button that the user clicks to show them all their goals
   $("#showGoals").on('click', function() {
     $.get("/goals.json", function(data) {
@@ -8,13 +9,24 @@ $(function () {
         $(".goal-box").append(newGoal.format());
       });
     });
+    $("#showGoals").hide();
+
   });
+
+  //More Info Button on Goals Index Page to render goal show page??
+  // $('.js-more').on('click', function() {
+  //   var id = $(this).data("id");
+  //   $.get("/goals/" + id + ".json", function(data) {
+  //
+  //   });
+  // });
 
 });
 
 
 //Goal object
 function Goal(attributes) {
+  this.id = attributes["id"];
   this.name = attributes["name"];
   this.description = attributes["description"];
   this.start_date = attributes["start_date"];
@@ -24,27 +36,12 @@ function Goal(attributes) {
 
 //Write a function to build proper HTML
 Goal.prototype.format = function() {
-  const open = '<div class="goal">';
-  const goalName = "<h3>" + this.name + "</h3>";
-  const goalDescription = "<p>" + this.description + "</p>";
-  const close = '</div>'
-  return open + goalName + goalDescription + close;
+  const html = `
+    <div id="goal-${this.id}" class="goal">
+    <h3>${this.name}</h3>
+    <p>${this.description}</p>
+    <button class="js-more btn btn-primary button" data-id="${this.id}">See More</button><br>
+    </div>
+  `
+  return html;
 };
-
-
-
-// //More Info Button on Goals Index Page
-// $('.js-more').on('click', function() {
-//   var id = $(this).data("id");
-//   $.get("/goals/" + id + ".json", function(data) {
-//     console.log(data);
-//     //build html for this with a function
-//     //What if the goal doesn't have a description?
-//     if(data["description"] !== ""){
-//       $(".description-" + id).text("Description: " + data["description"]);
-//     }
-//     //TODO convert dates to more readable format - moment?
-//     $(".start_date-" + id).text("Goal Start: " + data["start_date"]);
-//     $(".end_date-" + id).text("Goal End: " + data["end_date"]);
-//   });
-// });
