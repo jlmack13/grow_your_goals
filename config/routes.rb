@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'goals#index'
   resources :goals do
-    resources :tasks, only: [:show, :new, :edit]
+    resources :tasks, only: [:show, :new, :create, :edit]
   end
   get '/garden' => 'goals#garden'
   resources :tasks

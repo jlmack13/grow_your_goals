@@ -66,7 +66,29 @@
   <!-- END OF TASKS ROW -->
   <div class="new-task-form">
     <h3>Create a New Task</h3>
-    <%= render ("tasks/form") %>
+    <%= form_for([@goal, @task]) do |f| %>
+      <%= f.hidden_field :goal_id %>
+
+      <div class="field form-group row grow-form">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div><br>
+
+      <div class="field form-group row grow-form">
+        <%= f.label :description %>
+        <%= f.text_field :description, :class => 'form-control' %>
+      </div><br>
+
+
+      <div class="field form-group row grow-form">
+        <%= f.label :status %>
+        <%= f.select :status, options_for_select([["Incomplete", "Incomplete"], ["Complete", "Complete"]]), :class => 'form-control'  %>
+      </div>
+
+      <div class="actions" id="new-task-btn">
+        <%= f.submit  :class => 'btn btn-success' %>
+      </div>
+    <% end %>
   </div>
 
 </div>
@@ -85,6 +107,8 @@
         $( 'form' ).each(function(){
           this.reset();
         });
+        $(':submit').removeAttr('data-disable-with');
+        $(':submit').removeAttr('disabled');
       });
     });
 
