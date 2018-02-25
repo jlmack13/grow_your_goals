@@ -65,7 +65,9 @@
   <div class="task-box">
     <ul class="task-list">
       <% @goal.tasks.each do |a| %>
+        <% if !a.name.empty? %>
           <li><a href="/tasks/<%= a.id %>"><%= a.name%></a></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
@@ -78,7 +80,7 @@
 
 </div>
 <script type="text/javascript" charset="utf-8">
-  $(function () {
+  $(() => {
     //CREATE NEW TASK FOR GOAL SHOW Page
     $('form').submit(function(event) {
       //prevent form from submitting the default way

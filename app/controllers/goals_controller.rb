@@ -42,7 +42,7 @@ class GoalsController < ApplicationController
   def show
     if current_user == @goal.user
       @tasks = @goal.tasks
-      @task = @goal.tasks.build
+      @task = @goal.tasks.build(name: "")
       @goals = []
       @goal.user.goals.map { |goal| @goals << goal.id }
       respond_to do |format|

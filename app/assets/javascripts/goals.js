@@ -1,5 +1,5 @@
-$(function () {
 
+document.addEventListener("turbolinks:load", function() {
   //SHOW GOALS INDEX FROM API
   $("#showGoals").on('click', function(e) {
     e.preventDefault();
@@ -12,8 +12,6 @@ $(function () {
     });
     $("#showGoals").hide();
   });
-
-
 
   //NEXT GOAL BUTTON (SHOW GOAL FROM API)
   $(".js-next").on("click", function(e) {
@@ -36,8 +34,10 @@ $(function () {
       const tasks = data["tasks"];
       tasks.forEach(function(task) {
         let newTask = new Task(task);
-        $(".task-list").append(newTask.format());
-      })
+        if(newTask.name !== "") {
+          $(".task-list").append(newTask.format());
+        };
+      });
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
       $(".js-previous").attr("data-id", data["id"]);
@@ -64,24 +64,16 @@ $(function () {
       const tasks = data["tasks"];
       tasks.forEach(function(task) {
         let newTask = new Task(task);
-        $(".task-list").append(newTask.format());
-      })
+        if(newTask.name !== "") {
+          $(".task-list").append(newTask.format());
+        };
+      });
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
       $(".js-previous").attr("data-id", data["id"]);
     });
   });
 });
-
-
-  //More Info Button on Goals Index Page to render goal show page??
-  // $('.js-more').on('click', function() {
-  //   var id = $(this).data("id");
-  //   $.get("/goals/" + id + ".json", function(data) {
-  //
-  //   });
-  // });
-
 
 
 //GOAL OBJECT MODEL
