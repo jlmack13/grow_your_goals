@@ -11,11 +11,6 @@
     <div class="left-goal-box">
       <h1 class="goal-name">Goal: <%= @goal.name %></h1>
 
-      <!-- <div class="progress goal-bar">
-        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<%= @goal.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @goal.progress %>%"></div>
-      </div>
-      <br> -->
-
       <p class="goal-description"><%= @goal.description %></p>
       <p class="goal-status" class="status status-<%= @goal.status %>"><%= @goal.status %></p>
 
@@ -31,10 +26,6 @@
         </div>
       <% end %> -->
 
-      <% if @goal.status != "Complete" %>
-        <h3><%= distance_of_time_in_words(Date.current, @goal.end_date).capitalize%>&nbsp; Remaining</h3>
-      <% end %>
-
       <a href="#" class="js-previous btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Previous Goal</a>
       <a href="#" class="js-next btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Next Goal</a>
 
@@ -43,7 +34,7 @@
 
     <!-- RIGHT SIDE -->
     <div class="right-goal-box">
-      <!-- <%= image_tag("plant-#{@goal.plant_image}", width: "200") %> -->
+
         <div class="goal-buttons">
           <div class="btn btn-info button">
             <%= link_to "Edit Goal", edit_goal_path(@goal) %>
@@ -73,7 +64,7 @@
   </div>
 
 <!-- END OF TASKS ROW -->
-<div class="">
+<div class="new-task-form">
   <h3>Create a New Task</h3>
   <%= render ("tasks/form") %>
 </div>
@@ -91,8 +82,11 @@
       posting.done(function(data) {
         var task = new Task(data);
         $(".task-list").append(task.format());
+        $( 'form' ).each(function(){
+          this.reset();
+        });
       });
     });
-    $('form').trigger("reset");
+
   });
 </script>
