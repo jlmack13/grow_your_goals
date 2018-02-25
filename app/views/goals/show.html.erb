@@ -14,18 +14,6 @@
       <p class="goal-description"><%= @goal.description %></p>
       <p class="goal-status" class="status status-<%= @goal.status %>"><%= @goal.status %></p>
 
-      <!-- <% if !@goal.categories.empty? %>
-        <div class="category">
-          <h6>CATEGORY: </h6>
-          <% @goal.categories.uniq.each do |c| %>
-            <h6><%= c.name %>
-              (Subcategory:
-              <%= c.subcategory %>
-              )</h6><br>
-          <% end %>
-        </div>
-      <% end %> -->
-
       <a href="#" class="js-previous btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Previous Goal</a>
       <a href="#" class="js-next btn-primary btn" data-id="<%=@goal.id%>" data-goals="<%= @goals %>">Next Goal</a>
 
@@ -66,29 +54,7 @@
   <!-- END OF TASKS ROW -->
   <div class="new-task-form">
     <h3>Create a New Task</h3>
-    <%= form_for([@goal, @task]) do |f| %>
-      <%= f.hidden_field :goal_id %>
-
-      <div class="field form-group row grow-form">
-        <%= f.label :name %>
-        <%= f.text_field :name, :class => 'form-control' %>
-      </div><br>
-
-      <div class="field form-group row grow-form">
-        <%= f.label :description %>
-        <%= f.text_field :description, :class => 'form-control' %>
-      </div><br>
-
-
-      <div class="field form-group row grow-form">
-        <%= f.label :status %>
-        <%= f.select :status, options_for_select([["Incomplete", "Incomplete"], ["Complete", "Complete"]]), :class => 'form-control'  %>
-      </div>
-
-      <div class="actions" id="new-task-btn">
-        <%= f.submit  :class => 'btn btn-success' %>
-      </div>
-    <% end %>
+    <%= render 'tasks/form' %>
   </div>
 
 </div>
