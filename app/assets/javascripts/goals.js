@@ -23,7 +23,8 @@ document.addEventListener("turbolinks:load", function() {
     var index = userGoals.indexOf(currentGoal) + 1;
     if (index === userGoals.length) {
       index = 0;
-    }
+    };
+    history.pushState(null, null, `${userGoals[index]}`);
     //testing this to see if i can create a loop with the buttons
     $.get("/goals/" + userGoals[index] + ".json", function(data) {
       //Set goal attributes
@@ -55,7 +56,8 @@ document.addEventListener("turbolinks:load", function() {
     //check index to loop through to last goal if necessary
     if (index < 0) {
       index = userGoals.length - 1;
-    }
+    };
+    history.pushState(null, null, `${userGoals[index]}`);
     $.get("/goals/" + userGoals[index] + ".json", function(data) {
       $(".goal-name").text(data["name"]);
       $(".goal-description").text(data["description"]);
