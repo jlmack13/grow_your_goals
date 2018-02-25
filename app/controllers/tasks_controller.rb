@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     @task = @goal.tasks.build(task_params)
     if @task.save
       flash[:notice] = "Task successfully created!"
-      render json: @task, status: 201 
+      render json: @task, status: 201
     else
       render :new
     end
@@ -45,9 +45,10 @@ class TasksController < ApplicationController
   #add notices about deleted task
   def destroy
     if current_user == @task.goal.user
+      @goal = @task.goal
       @task.destroy
       flash[:notice] = "Task successfully deleted!"
-      redirect_to '/'
+      redirect_to "/goals/#{@goal.id}"
     else
       redirect_to '/'
     end
