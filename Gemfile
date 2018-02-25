@@ -34,6 +34,9 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'pry'
+gem 'active_model_serializers'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

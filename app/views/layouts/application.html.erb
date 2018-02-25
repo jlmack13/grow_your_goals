@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/lumen/bootstrap.min.css" rel="stylesheet" integrity="sha384-rGAkR2qts0FfeepPEwAKdA+KLiTct+OBJ7ukPPivL86aKZa39nuOS0Yj6Sy8ebLR" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -48,6 +49,9 @@
         <% if flash[:notice] %>
             <div class="alert alert-dismissible alert-success notice">
               <strong>Oh snap! </strong><%= flash[:notice] %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
         <% end %>
 
@@ -61,7 +65,6 @@
           <div id="footer-right"><p>Created as part of the <a href="https://flatironschool.com">Learn.Co</a> curriculum</p></div>
       </footer>
   </div>
-
 
   </body>
 </html>
