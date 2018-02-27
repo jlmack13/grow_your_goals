@@ -9,11 +9,8 @@ class GoalsController < ApplicationController
   end
 
   def index
+    #TODO change this so that it's only the user's goals
     @goals = current_user.goals.incomplete
-    respond_to do |format|
-      format.html
-      format.json {render json: @goals}
-    end
   end
 
   def garden
@@ -42,13 +39,6 @@ class GoalsController < ApplicationController
   def show
     if current_user == @goal.user
       @tasks = @goal.tasks
-      @task = @goal.tasks.build(name: "")
-      @goals = []
-      @goal.user.goals.map { |goal| @goals << goal.id }
-      respond_to do |format|
-        format.html
-        format.json { render json: @goal }
-      end
     else
       redirect_to '/'
     end

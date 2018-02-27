@@ -5,26 +5,17 @@
 </div>
 
 <div class="goal-box">
-  <button id="showGoals" class="btn btn-primary button">Show Goals</button><br>
+  <% @goals.each do |goal| %>
+    <div class="goal">
+      <%= image_tag("plant-#{goal.plant_image}", width: "100") %>
+      <h3><%= link_to goal.name, goal_path(goal) %></h3>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<%= goal.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= goal.progress %>%"></div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="btn btn-success button">
   <%= link_to "New Goal", new_goal_path(@goal) %>
 </div><br>
-
-<!-- <% @goals.each do |goal| %>
-  <div class="goal">
-    <%= image_tag("plant-#{goal.plant_image}", width: "100") %>
-    <h3><%= link_to goal.name, goal_path(goal) %></h3>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<%= goal.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= goal.progress %>%"></div>
-    </div>
-    <button type="button" class="js-more" data-id="<%= goal.id %>">More Info</button>
-
-    <div class="more-info-<%= goal.id %>">
-      <p class="description-<%= goal.id %>"></p>
-      <p class="start_date-<%= goal.id %>"></p>
-      <p class="end_date-<%= goal.id %>"></p>
-    </div>
-  </div>
-<% end %> -->
